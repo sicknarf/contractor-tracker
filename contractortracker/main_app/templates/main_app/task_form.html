@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>New work description for {{client.name}}</h1>
+  <!-- Leaving the action empty makes the form post to the same url used to display it -->
+  <form action="" method="POST">
+    {% csrf_token %}
+    <table>
+      <!-- Render the inputs inside of <tr>s & <td>s -->
+      {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit!" class="btn waves-effect waves-light #29A69A">
+  </form>
+    
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Here is a list of your current clients</h1>
+    <a href="{% url 'new_client' %}">set up new client</a>
+    {%if clients.count%}
+    {%for client in clients%}
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{client.name}}</span>
+            <p>
+            {{client.address1}}
+            {%if client.address2.count%}
+            <br />
+            {{client.address2}}
+            {% endif %}
+            <br />
+            {{client.city}}, {{client.state}} {{client.zip_code}}
+            </p>
+        </div>
+        <div class="card-action">
+            <div class="complete-or-delete">
+            <a class="btn-small red lighten-2" href="{% url 'manage_client' client.id%}">manage</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {%endif%}
+{% endblock %}

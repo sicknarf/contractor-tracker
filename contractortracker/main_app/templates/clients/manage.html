@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Manage Client: {{client.name}}</h1>
+    <h5>Description of work:</h5>
+
+        {%for task in client.task_set.all %}
+            {{task.description}}
+            <br />
+        {% endfor %}
+        
+    <a class="btn-small red lighten-2" href="{% url 'add_task' client.id %}">add work description</a>
+{% endblock %}
